@@ -1,6 +1,6 @@
 {
   "name": "github-action-slack-notify-build",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "main": "index.js",
   "license": "Apache-2.0",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "@actions/github": "^1.1.0",
+    "@actions/github": "^6.0.0",
     "@slack/web-api": "^6.10.0"
   },
   "devDependencies": {
