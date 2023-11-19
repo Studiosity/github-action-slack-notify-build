@@ -42487,6 +42487,8 @@ const { buildSlackAttachments, formatChannelName } = __nccwpck_require__(1608);
 
 (async () => {
   try {
+    console.log('Starting run..');
+
     const channel = core.getInput('channel');
     const status = core.getInput('status');
     const color = core.getInput('color');
@@ -42494,13 +42496,17 @@ const { buildSlackAttachments, formatChannelName } = __nccwpck_require__(1608);
     const token = process.env.SLACK_BOT_TOKEN;
     const slack = new WebClient(token);
 
+    console.log('Fetching channel ID??');
     if (!channel && !core.getInput('channel_id')) {
       core.setFailed(`You must provider either a 'channel' or a 'channel_id'.`);
       return;
     }
 
+    console.log('Pre-building attachments..');
     const attachments = buildSlackAttachments({ status, color, github });
+    console.log('Post-building attachments..');
     const channelId = core.getInput('channel_id') || (await lookUpChannelId({ slack, channel }));
+    console.log('Post-looking up channel..');
 
     if (!channelId) {
       core.setFailed(`Slack channel ${channel} could not be found.`);
@@ -42518,7 +42524,9 @@ const { buildSlackAttachments, formatChannelName } = __nccwpck_require__(1608);
       args.ts = messageId;
     }
 
+    console.log('Pre sending slack chat..');
     const response = await slack.chat[apiMethod](args);
+    console.log('Post sending slack chat..');
 
     core.setOutput('message_id', response.ts);
   } catch (error) {
