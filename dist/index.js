@@ -36197,12 +36197,12 @@ function buildSlackAttachments({ status, color, github }) {
     {
       color,
       fields: [
+        referenceLink,
         {
           title: 'Workflow',
           value: `<https://github.com/${owner}/${repo}/actions/runs/${runId} | ${workflow}>`,
           short: true,
         },
-        referenceLink,
         {
           title: 'Status',
           value: status,
