@@ -142,6 +142,16 @@ In order to use your Slack App with this GitHub Action, be sure to enable the fo
 | `channels:read` | If using `channel` instead of `channel_id` |
 | `groups:read`   | If using `channel` instead of `channel_id` |
 
+### Building a release
+
+1. `yarn` - install dependencies
+1. `yarn build` - build the distribution files
+1. Update the package.json with the new version
+1. Commit the changes/push to origin
+1. `git tag <the new version number>` - Tag the release
+1. `git push --tags` - Push the tag to origin
+1. `git push -f https://github.com/Studiosity/github-action-slack-notify-build.git HEAD:refs/heads/v2` - Replace the `v2` branch
+
 ## License
 
 The scripts and documentation in this project are released under the [Apache 2.0 License](LICENSE).
